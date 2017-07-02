@@ -9,6 +9,9 @@ Ractive.components.scrollarea = Ractive.extend({
 				<span style='display: inline-block;' class='{{scrollbar_class}}' style='height: {{scrollbar.height}}%; top: {{scrollbar.top}}%'></span>\
 			</div>",
 
+	scroll: function(v) {
+		this.fire('scroll', { dx: 0, dy: v })
+	},
 	update_scroll: function(event) {
 		if (!event)
 			event = { dx: 0, dy: 0 }
@@ -47,7 +50,8 @@ Ractive.components.scrollarea = Ractive.extend({
 
 		this.on( 'scroll', function ( event ) {
 
-			event.original.preventDefault(); // prevent entire page from scrolling
+			if (event.original)
+				event.original.preventDefault(); // prevent entire page from scrolling
 
 			this.update_scroll(event)
 
