@@ -22,7 +22,7 @@ Ractive.components.scrollarea = Ractive.extend({
 
 		if (inner.height < outer.height) {
 			this.set('scrollbar.height', 0)
-			this.set('scrollbar.top', 0 )    // bugfix: when area shrinks and scrollbar no longer needed, reset scroll to top 
+			this.set('top', 0 )             // bugfix: when area shrinks and scrollbar no longer needed, reset scroll to top 
 			return false;
 		}
 
